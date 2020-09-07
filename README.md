@@ -1,3 +1,21 @@
+Configuration details (by Armin Bajramovic):
+==================
+* There are two APIs:
+    POST `http://localhost:5000/store?numbers=2,1,3,4,6,5,7`
+    GET `http://localhost:5000/permutation?id=1` 
+
+* Both in-memory and database version are contained in the code. Switch is done via configuration parameter in application.yml:
+
+    storage:
+        type: memory / db
+
+* Test application also has application.yml and same config parameter
+
+
+
+
+
+
 Interview question
 ==================
 
@@ -49,3 +67,5 @@ should give back a random permutation of the array (e.g., `2,3,6,7,1,3,5`)
 * Send us a link to a repository fulfilling the requirements with two tags to check part 1 and 2.
 * Your code will be tested using different tests.
 * Successful implementation will move to interview.
+
+
