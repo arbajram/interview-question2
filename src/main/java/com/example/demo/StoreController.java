@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StoreController {
 
-    private final NumbersService numbersService;
+    private final NumbersPersistenceService numbersService;
 
-    public StoreController(NumbersService numbersService) {
+    public StoreController(NumbersPersistenceService numbersService) {
         this.numbersService = numbersService;
     }
 

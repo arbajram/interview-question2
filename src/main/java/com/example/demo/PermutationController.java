@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PermutationController {
 
-    private final NumbersService numbersService;
+    private final NumbersPersistenceService numbersService;
 
-    public PermutationController(NumbersService numbersService) {
+    public PermutationController(NumbersPersistenceService numbersService) {
         this.numbersService = numbersService;
     }
 
