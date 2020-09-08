@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.rest;
 
+import com.example.demo.service.INumbersService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PermutationController {
 
-    private final NumbersPersistenceService numbersService;
+    private final INumbersService numbersService;
 
-    public PermutationController(NumbersPersistenceService numbersService) {
+    public PermutationController(INumbersService numbersService) {
         this.numbersService = numbersService;
     }
 
     @GetMapping("/permutation")
-    public Integer[] permutation(@RequestParam(name = "id", required = true) Integer id) {
+    public Integer[] permutation(@RequestParam(name = "id") Integer id) {
         return numbersService.permutation(id);
     }
 

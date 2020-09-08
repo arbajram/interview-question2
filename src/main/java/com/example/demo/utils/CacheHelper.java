@@ -12,7 +12,6 @@ public class CacheHelper {
 
     private CacheManager cacheManager;
     private Cache<Integer, Integer[]> storedArrayCache;
-    private Cache<String, Integer> genericCache;
 
     public CacheHelper() {
         cacheManager = CacheManagerBuilder
@@ -24,23 +23,9 @@ public class CacheHelper {
                         .newCacheConfigurationBuilder(
                                 Integer.class, Integer[].class,
                                 ResourcePoolsBuilder.heap(1000)));
-
-        genericCache = cacheManager
-                .createCache("genericCache", CacheConfigurationBuilder
-                        .newCacheConfigurationBuilder(
-                                String.class, Integer.class,
-                                ResourcePoolsBuilder.heap(5)));
     }
 
     public Cache<Integer, Integer[]> getStoredArrayCacheFromCacheManager() {
         return cacheManager.getCache("storedArray", Integer.class, Integer[].class);
     }
-
-    public Cache<String, Integer> getGenericCache()
-    {
-        return cacheManager.getCache("genericCache", String.class, Integer.class);
-    }
-
-
-    // standard getters and setters
 }

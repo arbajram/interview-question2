@@ -24,8 +24,7 @@ public class ArrayController {
     }
 
     @PostMapping
-    public Integer createArray(@RequestParam(name = "array", required = true) String array)
-            throws RecordNotFoundException {
+    public Integer createArray(@RequestParam(name = "array", required = true) String array) {
         ArrayEntity newEntity = service.createArrayEntity(array);
         return newEntity.getId();
     }

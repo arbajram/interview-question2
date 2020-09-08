@@ -20,15 +20,14 @@ public class ArrayService {
         if(array.isPresent()) {
             return array.get();
         } else {
-            throw new RecordNotFoundException("No array record exist for given id");
+            throw new RecordNotFoundException(String.format("Array with id = %s does not exist", id));
         }
     }
      
-    public ArrayEntity createArrayEntity(String array) throws RecordNotFoundException {
+    public ArrayEntity createArrayEntity(String array) {
         ArrayEntity newEntity = new ArrayEntity();
 
         newEntity.setArray(array);
-
         newEntity = repository.save(newEntity);
 
         return newEntity;

@@ -1,0 +1,14 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+array-persistence-client:
+  service-name: array-persistence-service
+  context-path: array-persistence-service
+
+local:
+  server:
+    port: 5000 #set but actually not used - required on startup. Real port is random port
+
+storage:
+  type: db

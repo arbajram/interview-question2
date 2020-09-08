@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "${array-persistence-client.service-name}", url = "${array-persistence-client.url}")
+@FeignClient(name = "${array-persistence-client.service-name}", path = "${array-persistence-client.context-path}")
 public interface ArrayPersistanceHttpClient {
 
     @RequestMapping(consumes = "application/json", path = "/{id}")

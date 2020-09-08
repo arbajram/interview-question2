@@ -1,52 +1,50 @@
-package com.example.demo;
+package com.example.demo.service;
 
+import com.example.demo.service.INumbersService;
 import com.example.demo.utils.CacheHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
-public class NumbersService {
+public class NumbersMemoryService implements INumbersService {
     private final String LAST_ID = "lastId";
 
-    private final CacheHelper cache;
+    @Autowired
+    private CacheHelper cache;
 
-    public NumbersService(CacheHelper cache) {
-        this.cache = cache;
-    }
+    static final AtomicInteger counter = new AtomicInteger(0);
+
+    public NumbersMemoryService(){
+
+    };
 
     public int store(Integer[] integers) {
 
-        Integer lastId = 0;
-        if (cache.getGenericCache().containsKey(LAST_ID))
-        {
-            lastId = cache.getGenericCache().get(LAST_ID);
-        }
-
-        Integer nextId = lastId + 1;
+        //Get thread safe next id ...
+        Integer nextId = counter.incrementAndGet();
         cache.getStoredArrayCacheFromCacheManager().put(nextId, integers);
-
-        cache.getGenericCache().put(LAST_ID, nextId);
 
         return nextId;
     }
 
     public Integer[] permutation(Integer id)
     {
+        //Checking existence of the array
         if (!cache.getStoredArrayCacheFromCacheManager().containsKey(id))
         {
             throw new NoSuchElementException(String.format("Array with id = %s does not exist", id));
         }
 
+        //Get array and shuuffle
         Integer[] integers = cache.getStoredArrayCacheFromCacheManager().get(id);
-
         List<Integer> intList = Arrays.asList(integers);
-
         Collections.shuffle(intList);
-
         intList.toArray(integers);
 
         return integers;

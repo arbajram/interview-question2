@@ -20,4 +20,12 @@ spring:
 
 array-persistence-client:
   service-name: array-persistence-service
-  url: http://localhost:5000/array-persistence-service
+  context-path: array-persistence-service
+
+array-persistence-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: http://localhost:5000
+
+storage:
+  type: db
