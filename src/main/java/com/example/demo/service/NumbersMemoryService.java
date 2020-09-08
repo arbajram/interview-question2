@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.service.INumbersService;
 import com.example.demo.utils.CacheHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,8 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
-public class NumbersMemoryService implements INumbersService {
+@Slf4j
+public class NumbersMemoryService implements NumbersService {
     private final String LAST_ID = "lastId";
 
     @Autowired

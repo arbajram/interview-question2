@@ -1,10 +1,8 @@
 package com.example.demo.configuration;
 
-import com.example.demo.client.ArrayPersistanceHttpClient;
-import com.example.demo.service.INumbersService;
+import com.example.demo.service.NumbersService;
 import com.example.demo.service.NumbersMemoryService;
 import com.example.demo.service.NumbersPersistenceService;
-import com.example.demo.utils.CacheHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +15,7 @@ public class DefaultConfiguration {
 
     @Primary
     @Bean
-    public INumbersService service(@Value("${storage.type}")String storageType) throws ConfigurationException {
+    public NumbersService service(@Value("${storage.type}")String storageType) throws ConfigurationException {
         if (storageType.equals("memory"))
         {
             return new NumbersMemoryService();

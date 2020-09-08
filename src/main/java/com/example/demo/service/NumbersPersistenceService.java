@@ -2,21 +2,19 @@ package com.example.demo.service;
 
 import com.example.demo.client.ArrayPersistanceHttpClient;
 import com.example.demo.persistence.ArrayEntity;
-import com.example.demo.service.INumbersService;
-import com.example.demo.utils.CacheHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Response;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
-public class NumbersPersistenceService implements INumbersService {
+@Slf4j
+public class NumbersPersistenceService implements NumbersService {
 
     @Autowired
     private ArrayPersistanceHttpClient arrayPersistanceHttpClient;
@@ -32,7 +30,7 @@ public class NumbersPersistenceService implements INumbersService {
         ResponseEntity<ArrayEntity> responseEntity = arrayPersistanceHttpClient.getArrayById(id);
         String array = responseEntity.getBody().getArray();
 
-        System.out.println("Array = " + array);
+        log.info("Array = " + array);
 
         //Converting string to shuffled integer array
         String[] items = array.substring(1, array.length() - 1).split(",");
