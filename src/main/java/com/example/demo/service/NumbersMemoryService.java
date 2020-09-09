@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 @Slf4j
 public class NumbersMemoryService implements NumbersService {
     private final String LAST_ID = "lastId";
