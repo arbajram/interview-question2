@@ -28,4 +28,4 @@ array-persistence-service:
     listOfServers: http://localhost:5000
 
 storage:
-  type: memory
+  type: db
