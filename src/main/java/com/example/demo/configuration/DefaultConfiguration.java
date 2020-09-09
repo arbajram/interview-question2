@@ -13,7 +13,6 @@ import javax.naming.ConfigurationException;
 @Configuration
 public class DefaultConfiguration {
 
-    @Primary
     @Bean
     public NumbersService service(@Value("${storage.type}")String storageType) throws ConfigurationException {
         if (storageType.equals("memory"))

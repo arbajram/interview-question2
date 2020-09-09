@@ -11,4 +11,4 @@ local:
     port: 5000 #set but actually not used - required on startup. Real port is random port
 
 storage:
-  type: db
+  type: memory
